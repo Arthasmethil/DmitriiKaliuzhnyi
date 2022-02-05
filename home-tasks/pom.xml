@@ -12,14 +12,114 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <checkstyle.version>9.2.1</checkstyle.version>
+
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <testng.version>7.5</testng.version>
+        <assertj-core.version>3.22.0</assertj-core.version>
+        <epam-calculator.version>1.0</epam-calculator.version>
+        <slf4j-simple.version>1.7.35</slf4j-simple.version>
+        <testng.simpleSuite.config.path>src/test/resources/suites</testng.simpleSuite.config.path>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.calculator</groupId>
+            <artifactId>epam-calculator</artifactId>
+            <version>${epam-calculator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
         </dependency>
     </dependencies>
 
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
+                        https://raw.githubusercontent.com/DmitryKhodakovsky/epam-training-center-code-checkers-configurations/main/checkstyle/checkstyle.xml
+                    </configLocation>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.priority.simpleOperations.file}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>additionAndSubtractTests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/additionAndSubtractOperations.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>multiplyAndDivideTests</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/multiplyAndDivideOperations.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>wholePackageOfAllOperationsTests</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/wholePackageTests.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
+
+    </profiles>
 </project>
