@@ -1,31 +1,29 @@
 package com.epam.tc.hw1.functions;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.epam.tat.module4.Calculator;
 import com.epam.tc.hw1.providers.DataProviderForCalculator;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class DivideOperationTest {
-    Calculator calculator;
-
-    @BeforeMethod
-    public void setUp() {
-        calculator = new Calculator();
-    }
+public class DivideOperationTest extends AbstractCalculatorOperationTest {
 
     @Test(
-        dataProviderClass = DataProviderForCalculator.class,
-        dataProvider = "getTestDataForDivide")
+        groups = {"complexOperations"},
+        dataProvider = "getTestDataForDivide",
+        dataProviderClass = DataProviderForCalculator.class)
     public void divideTest(long a, long b, long expected) {
         long actual =  calculator.div(a, b);
         assertThat(actual).isEqualTo(expected);
     }
 
-    @AfterMethod
-    public void tearDown() {
-        calculator = null;
+    @Test(
+        groups = {"complexOperations"},
+        dataProvider = "getTestDataForDivideByZero",
+        dataProviderClass = DataProviderForCalculator.class)
+    public void divideByZeroTest(long a, long b) throws NumberFormatException {
+        assertThatThrownBy(() -> calculator.div(a, b))
+            .isInstanceOf(NumberFormatException.class)
+            .hasMessageContaining("Attempt to divide by zero");
     }
 }
