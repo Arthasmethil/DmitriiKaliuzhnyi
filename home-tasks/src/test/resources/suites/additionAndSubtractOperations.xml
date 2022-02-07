@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SimpleFunctions" verbose="1" >
+  <test name="AdditionAndSubtractGroup">
+    <groups>
+      <run>
+        <include name="simpleOperations"/>
+      </run>
+    </groups>
+    <packages>
+      <package name = "com.epam.tc.hw1.functions.*"/>
+    </packages>
+  </test>
+</suite>

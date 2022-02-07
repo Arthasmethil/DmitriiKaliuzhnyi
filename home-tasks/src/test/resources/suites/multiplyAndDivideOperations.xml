@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="ComplexFunctions" verbose="1">
+  <test name="MultiplyAndDivideGroup">
+  <groups>
+    <run>
+      <include name="complexOperations"/>
+    </run>
+  </groups>
+    <packages>
+      <package name = "com.epam.tc.hw1.functions.*"/>
+    </packages>
+  </test>
+</suite>
+
+
