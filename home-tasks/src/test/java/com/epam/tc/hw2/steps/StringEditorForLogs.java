@@ -1,9 +1,9 @@
-package com.epam.tc.hw2.utils;
+package com.epam.tc.hw2.steps;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegexChecker {
+public class StringEditorForLogs {
 
     public static String cutTimeOfLogString(String logStringWithTime) {
         Matcher matcher = Pattern.compile("[a-zA-Z]+:.*").matcher(logStringWithTime);

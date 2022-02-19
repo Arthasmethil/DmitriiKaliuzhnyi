@@ -1,11 +1,11 @@
-package com.epam.tc.hw2.utils;
+package com.epam.tc.hw2.steps;
 
 import com.epam.tc.hw2.constants.ConstantsForUserAndTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LogIn {
+public class LogInSteps {
 
     public static void signIn(WebDriverWait wait) {
         openLoginCaret(wait);
