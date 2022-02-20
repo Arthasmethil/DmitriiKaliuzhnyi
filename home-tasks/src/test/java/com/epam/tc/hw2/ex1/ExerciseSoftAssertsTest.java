@@ -28,7 +28,7 @@ public class ExerciseSoftAssertsTest extends SeleniumAbstractCore {
               .isEqualTo(User.EXPECTED_DISPLAYED_NAME);
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerMenu = driver.findElements(
-            By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li"));
+            By.cssSelector("ul.uui-navigation.nav.navbar-nav.m-l8 > li"));
         softly.assertThat(headerMenu)
               .hasSize(ExpectedValuesForTests.EXPECTED_TEXT_HEADER_MENU.size())
               .allMatch(WebElement::isDisplayed, "WebElement should be display")
@@ -59,7 +59,7 @@ public class ExerciseSoftAssertsTest extends SeleniumAbstractCore {
         driver.switchTo().defaultContent();
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         List<WebElement> homeLeftBar = driver.findElements(
-            By.xpath("//*[@id='mCSB_1_container']/ul/*"));
+            By.cssSelector("#mCSB_1_container > ul > *"));
         softly.assertThat(homeLeftBar)
               .hasSize(ExpectedValuesForTests.EXPECTED_TEXT_LEFT_MENU.size())
               .allMatch(WebElement::isDisplayed, "WebElement should be display")

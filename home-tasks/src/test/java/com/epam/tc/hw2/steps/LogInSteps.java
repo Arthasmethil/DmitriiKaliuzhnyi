@@ -17,7 +17,7 @@ public class LogInSteps {
 
 
     public static void openLoginCaret(WebDriver driver) {
-        driver.findElement(By.cssSelector("li[class*='uui-profile-menu']")).click();
+        driver.findElement(By.cssSelector("li.uui-profile-menu")).click();
     }
 
     public static void sendLoginName(WebDriver driver, String name) {
@@ -33,6 +33,6 @@ public class LogInSteps {
     }
 
     public static void visibilityOfLoginDropdownMenu(WebDriverWait wait) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class*='dropdown-menu-login']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.dropdown-menu-login")));
     }
 }

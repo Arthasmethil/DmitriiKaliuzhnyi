@@ -30,7 +30,7 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
                   .isEqualTo(User.EXPECTED_DISPLAYED_NAME);
         // 5. Open through the header menu Service -> Different Elements Page
         // 5.1 Dropdown caret is opened
-        driver.findElement(By.xpath("//li[@class='dropdown']")).click();
+        driver.findElement(By.cssSelector("li.dropdown")).click();
         // 5.2 Different elements is selected
         wait.until(ExpectedConditions
                 .elementToBeClickable(
@@ -47,7 +47,7 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
         // 9. Assert that for each checkbox there is an individual log row and value
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("info-panel-section")));
         List<String> logStringWithoutTime = driver
-            .findElements(By.xpath("//ul[@class='panel-body-list logs']/li"))
+            .findElements(By.cssSelector("ul.panel-body-list.logs > li"))
             .stream()
             .map(WebElement::getText)
             .map(StringEditorForLogs::cutTimeOfLogString)
