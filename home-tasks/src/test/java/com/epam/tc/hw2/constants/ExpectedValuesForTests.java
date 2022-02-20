@@ -2,16 +2,11 @@ package com.epam.tc.hw2.constants;
 
 import java.util.List;
 
-public class ConstantsForUserAndTests {
+public class ExpectedValuesForTests {
     public static final String SITE_ADDRESS = "https://jdi-testing.github.io/jdi-light/index.html";
-    public static final String USERNAME = "Roman";
-    public static final String PASS = "Jdi1234";
 
     // Expectations for point 2 GENERAL
     public static final String EXPECTED_TITLE = "Home Page";
-
-    // Expectations for point 4 GENERAL
-    public static final String EXPECTED_NAME = "ROMAN IOVLEV";
 
     // Expectations for point 5 exercise 1
     public static final List<String> EXPECTED_TEXT_HEADER_MENU = List.of(

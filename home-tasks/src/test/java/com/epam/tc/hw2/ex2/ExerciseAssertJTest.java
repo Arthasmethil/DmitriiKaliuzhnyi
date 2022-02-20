@@ -1,6 +1,7 @@
 package com.epam.tc.hw2.ex2;
 
-import com.epam.tc.hw2.constants.ConstantsForUserAndTests;
+import com.epam.tc.hw2.constants.ExpectedValuesForTests;
+import com.epam.tc.hw2.constants.User;
 import com.epam.tc.hw2.steps.LogInSteps;
 import com.epam.tc.hw2.steps.SeleniumAbstractCore;
 import com.epam.tc.hw2.utils.StringEditorForLogs;
@@ -17,16 +18,16 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
     @Test
     public void checkAndSearchElementsOnDifferentElementsPage() {
         // 1. Open test site by URL
-        driver.get(ConstantsForUserAndTests.SITE_ADDRESS);
+        driver.get(ExpectedValuesForTests.SITE_ADDRESS);
         // 2. Assert Browser title
-        Assertions.assertThat(driver.getTitle()).isEqualTo(ConstantsForUserAndTests.EXPECTED_TITLE);
+        Assertions.assertThat(driver.getTitle()).isEqualTo(ExpectedValuesForTests.EXPECTED_TITLE);
         // 3. User is logged
-        LogInSteps.signIn(driver, wait, ConstantsForUserAndTests.USERNAME, ConstantsForUserAndTests.PASS);
+        LogInSteps.signIn(driver, wait, User.USERNAME, User.PASS);
         // 4. Name is displayed and equals to expected result
-        Assertions.assertThat(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name"))))
+        Assertions.assertThat(driver.findElement(By.id("user-name")))
                   .matches(WebElement::isDisplayed)
                   .extracting(WebElement::getText)
-                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_NAME);
+                  .isEqualTo(User.EXPECTED_DISPLAYED_NAME);
         // 5. Open through the header menu Service -> Different Elements Page
         // 5.1 Dropdown caret is opened
         driver.findElement(By.xpath("//li[@class='dropdown']")).click();
@@ -52,8 +53,8 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
             .map(StringEditorForLogs::cutTimeOfLogString)
             .collect(Collectors.toList());
         Assertions.assertThat(logStringWithoutTime)
-              .hasSize(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.size())
-              .containsExactlyElementsOf(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME);
+              .hasSize(ExpectedValuesForTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.size())
+              .containsExactlyElementsOf(ExpectedValuesForTests.EXPECTED_TEXT_LOG_WITHOUT_TIME);
         // 10. Browser is closed by tearDown method, which is located into utils.SeleniumCoreTest
     }
 }
