@@ -3,7 +3,9 @@ package com.epam.tc.hw2.ex2;
 import com.epam.tc.hw2.constants.ConstantsForUserAndTests;
 import com.epam.tc.hw2.steps.LogInSteps;
 import com.epam.tc.hw2.steps.SeleniumAbstractCore;
-import com.epam.tc.hw2.steps.StringEditorForLogs;
+import com.epam.tc.hw2.utils.StringEditorForLogs;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,50 +21,39 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
         // 2. Assert Browser title
         Assertions.assertThat(driver.getTitle()).isEqualTo(ConstantsForUserAndTests.EXPECTED_TITLE);
         // 3. User is logged
-        LogInSteps.signIn(wait);
+        LogInSteps.signIn(driver, wait, ConstantsForUserAndTests.USERNAME, ConstantsForUserAndTests.PASS);
         // 4. Name is displayed and equals to expected result
-        Assertions.assertThat(wait.until(ExpectedConditions
-                                      .visibilityOfElementLocated(By.id("user-name")))
-                                  .isDisplayed()).isTrue();
+        Assertions.assertThat(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name"))))
+                  .matches(WebElement::isDisplayed)
+                  .extracting(WebElement::getText)
+                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_NAME);
         // 5. Open through the header menu Service -> Different Elements Page
         // 5.1 Dropdown caret is opened
-        driver.findElement(By.cssSelector(".m-l8 > li.dropdown")).click();
+        driver.findElement(By.xpath("//li[@class='dropdown']")).click();
         // 5.2 Different elements is selected
         wait.until(ExpectedConditions
                 .elementToBeClickable(
                     By.xpath("//a[contains(text(),'Different elements')]")))
             .click();
         // 6. Select checkboxes
-        // 6.1 Water checkbox
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/label[1]/*"))).click();
-        // 6.2 Wind checkbox
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/label[3]/*"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("main-content-hg")));
+        driver.findElement(By.xpath("//label[@class='label-checkbox' and normalize-space(string())='Water']")).click();
+        driver.findElement(By.xpath("//label[@class='label-checkbox' and normalize-space(string())='Wind']")).click();
         // 7. Select radio
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[3]/label[4]/*"))).click();
+        driver.findElement(By.xpath("//label[@class='label-radio' and normalize-space(string())='Selen']")).click();
         // 8. Select in dropdown
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'Yellow')]"))).click();
-        // 9. Assert that
-        //
-        // 9.1 for each checkbox there is an individual log row and value is corresponded to the status of checkbox
-        //
-        WebElement waterLog =
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Water')]")));
-        WebElement windLog =
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Wind')]")));
-        Assertions.assertThat(StringEditorForLogs.cutTimeOfLogString(waterLog.getText()))
-                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.get(0));
-        Assertions.assertThat(StringEditorForLogs.cutTimeOfLogString(windLog.getText()))
-                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.get(1));
-        // 9.2 for radio button there is a log row and value is corresponded to the status of radio button
-        WebElement selenLog =
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Selen')]")));
-        Assertions.assertThat(StringEditorForLogs.cutTimeOfLogString(selenLog.getText()))
-                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.get(2));
-        // 9.3 for dropdown there is a log row and value is corresponded to the selected value.
-        WebElement colorLog =
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), 'Yellow')]")));
-        Assertions.assertThat(StringEditorForLogs.cutTimeOfLogString(colorLog.getText()))
-                  .isEqualTo(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.get(3));
+        driver.findElement(By.xpath("//option[contains(text(),'Yellow')]")).click();
+        // 9. Assert that for each checkbox there is an individual log row and value
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("info-panel-section")));
+        List<String> logStringWithoutTime = driver
+            .findElements(By.xpath("//ul[@class='panel-body-list logs']/li"))
+            .stream()
+            .map(WebElement::getText)
+            .map(StringEditorForLogs::cutTimeOfLogString)
+            .collect(Collectors.toList());
+        Assertions.assertThat(logStringWithoutTime)
+              .hasSize(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME.size())
+              .containsExactlyElementsOf(ConstantsForUserAndTests.EXPECTED_TEXT_LOG_WITHOUT_TIME);
         // 10. Browser is closed by tearDown method, which is located into utils.SeleniumCoreTest
     }
 }

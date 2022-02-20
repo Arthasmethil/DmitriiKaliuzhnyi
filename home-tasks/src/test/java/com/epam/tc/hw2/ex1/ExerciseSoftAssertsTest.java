@@ -20,22 +20,20 @@ public class ExerciseSoftAssertsTest extends SeleniumAbstractCore {
         // 2. Assert Browser title
         softly.assertThat(driver.getTitle()).isEqualTo(ConstantsForUserAndTests.EXPECTED_TITLE);
         // 3. User is logged
-        LogInSteps.signIn(wait);
+        LogInSteps.signIn(driver, wait, ConstantsForUserAndTests.USERNAME, ConstantsForUserAndTests.PASS);
         // 4. Name is displayed and equals to expected result
-        softly.assertThat(wait.until(ExpectedConditions
-                                      .visibilityOfElementLocated(By.id("user-name")))
-                                  .isDisplayed()).isTrue();
+        softly.assertThat(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name"))))
+              .matches(WebElement::isDisplayed)
+              .extracting(WebElement::getText)
+              .isEqualTo(ConstantsForUserAndTests.EXPECTED_NAME);
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerMenu = driver.findElements(
             By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li"));
         softly.assertThat(headerMenu)
-              .filteredOn(WebElement::isDisplayed, Boolean.TRUE)
+              .hasSize(ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU.size())
+              .allMatch(WebElement::isDisplayed, "WebElement should be display")
               .extracting(WebElement::getText)
-              .contains(
-                  ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU.get(0),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU.get(1),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU.get(2),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU.get(3));
+              .containsExactlyElementsOf(ConstantsForUserAndTests.EXPECTED_TEXT_HEADER_MENU);
         // 6. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefitIcons = driver.findElements(By.className("benefit-icon"));
         for (WebElement icon : benefitIcons) {
@@ -44,12 +42,10 @@ public class ExerciseSoftAssertsTest extends SeleniumAbstractCore {
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> benefitText = driver.findElements(By.className("benefit-txt"));
         softly.assertThat(benefitText)
+              .hasSize(ConstantsForUserAndTests.EXPECTED_ICON_TEXTS.size())
+              .allMatch(WebElement::isDisplayed, "WebElement should be display")
               .extracting(WebElement::getText)
-              .contains(
-                  ConstantsForUserAndTests.EXPECTED_ICON_TEXTS.get(0),
-                  ConstantsForUserAndTests.EXPECTED_ICON_TEXTS.get(1),
-                  ConstantsForUserAndTests.EXPECTED_ICON_TEXTS.get(2),
-                  ConstantsForUserAndTests.EXPECTED_ICON_TEXTS.get(3));
+              .containsExactlyElementsOf(ConstantsForUserAndTests.EXPECTED_ICON_TEXTS);
         // 8. Assert that there is the iframe with “Frame Button” exist
         softly.assertThat(driver.findElement(By.id("frame")).isDisplayed()).isTrue();
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
@@ -61,13 +57,10 @@ public class ExerciseSoftAssertsTest extends SeleniumAbstractCore {
         List<WebElement> homeLeftBar = driver.findElements(
             By.xpath("//*[@id='mCSB_1_container']/ul/*"));
         softly.assertThat(homeLeftBar)
-              .filteredOn(WebElement::isDisplayed, Boolean.TRUE)
+              .hasSize(ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU.size())
+              .allMatch(WebElement::isDisplayed, "WebElement should be display")
               .extracting(WebElement::getText)
-              .contains(
-                  ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU.get(0),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU.get(1),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU.get(2),
-                  ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU.get(3));
+              .containsExactlyElementsOf(ConstantsForUserAndTests.EXPECTED_TEXT_LEFT_MENU);
         // 12. Assert all
         softly.assertAll();
         // 12.1 Browser is closed by tearDown method, which is located into utils.SeleniumCoreTest
