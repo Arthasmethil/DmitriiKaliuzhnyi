@@ -140,5 +140,11 @@
                 <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw2/homeworkTwo.xml</testng.priority.simpleOperations.file>
             </properties>
         </profile>
+        <profile>
+            <id>hw3</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw3/homeworkThree.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
     </profiles>
 </project>
