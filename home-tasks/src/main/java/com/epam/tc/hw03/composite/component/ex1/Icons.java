@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Icons extends AbstractBaseComponent {
-    @FindBy(className = "benefit-icon")
+    @FindBy(css = ".benefit-icon")
     private List<WebElement> benefitIcons;
 
-    @FindBy(className = "benefit-txt")
+    @FindBy(css = ".benefit-txt")
     private List<WebElement> benefitText;
 
     public Icons(WebDriver driver) {
