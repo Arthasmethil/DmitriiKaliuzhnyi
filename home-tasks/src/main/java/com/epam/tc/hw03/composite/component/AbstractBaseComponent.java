@@ -1,7 +1,9 @@
 package com.epam.tc.hw03.composite.component;
 
 import java.time.Duration;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,4 +19,11 @@ public abstract class AbstractBaseComponent {
         PageFactory.initElements(this.driver, this);
     }
 
+    public void clickOnItem(final List<WebElement> list, final String itemText) {
+        for (WebElement item : list) {
+            if (item.getText().equals(itemText)) {
+                item.click();
+            }
+        }
+    }
 }

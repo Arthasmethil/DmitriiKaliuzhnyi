@@ -33,22 +33,22 @@ public class Login extends AbstractBaseComponent {
 
     public Login clickToDropdownLoginWindow() {
         dropdownLoginCaret.click();
-        return new Login(driver);
+        return this;
     }
 
-    public Login visibilityOfLoginDropdownMenu() {
+    public Login ensureVisibilityOfLoginDropdownMenu() {
         wait.until(ExpectedConditions.visibilityOf(dropdownLoginWindow));
-        return new Login(driver);
+        return this;
     }
 
     public Login sendLoginName(final String name) {
         loginName.sendKeys(name);
-        return new Login(driver);
+        return this;
     }
 
     public Login sendLoginPassword(final String password) {
         loginPassword.sendKeys(password);
-        return new Login(driver);
+        return this;
     }
 
     public IndexPageForExTwoFluent clickToSignIn() {

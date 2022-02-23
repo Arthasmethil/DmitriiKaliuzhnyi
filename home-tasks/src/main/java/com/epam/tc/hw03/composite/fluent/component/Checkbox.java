@@ -33,32 +33,27 @@ public class Checkbox extends AbstractBaseComponent {
         return new DifferentElementsPageFluent(driver);
     }
 
-    public DifferentElementsPageFluent selectWaterCheckbox() {
+    public Checkbox selectWaterCheckbox() {
         waterCheckboxElement.click();
-        return new DifferentElementsPageFluent(driver);
+        return this;
     }
 
-    public DifferentElementsPageFluent selectWindCheckbox() {
+    public Checkbox selectWindCheckbox() {
         windCheckboxElement.click();
-        return new DifferentElementsPageFluent(driver);
+        return this;
     }
 
-    public DifferentElementsPageFluent selectSelenRadio() {
+    public Checkbox selectSelenRadio() {
         selenRadioElement.click();
-        return new DifferentElementsPageFluent(driver);
+        return this;
     }
 
-    public DifferentElementsPageFluent selectYellowColors() {
+    public Checkbox selectYellowColors() {
         yellowColorElement.click();
-        return new DifferentElementsPageFluent(driver);
+        return this;
     }
 
-    public DifferentElementsPageFluent selectAllEnableCheckboxes() {
-        wait.until(ExpectedConditions.visibilityOf(containerOfCheckboxes));
-        waterCheckboxElement.click();
-        windCheckboxElement.click();
-        selenRadioElement.click();
-        yellowColorElement.click();
+    public DifferentElementsPageFluent goToDifferentElementsPageFluent() {
         return new DifferentElementsPageFluent(driver);
     }
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class Checkbox extends AbstractBaseComponent {
 
     @FindBy(className = "main-content-hg")
-    private WebElement containerOfCheckboxes;
+    private WebElement mainContentToSelect;
 
     @FindBy(xpath = "//label[@class='label-checkbox' and normalize-space(string())='Water']")
     private WebElement waterCheckboxElement;
@@ -27,8 +27,8 @@ public class Checkbox extends AbstractBaseComponent {
         super(driver);
     }
 
-    public void visibilityOfCheckboxes() {
-        wait.until(ExpectedConditions.visibilityOf(containerOfCheckboxes));
+    public void ensureVisibilityOfCheckboxesRadioColors() {
+        wait.until(ExpectedConditions.visibilityOf(mainContentToSelect));
     }
 
     public void selectWaterCheckbox() {
@@ -47,8 +47,8 @@ public class Checkbox extends AbstractBaseComponent {
         yellowColorElement.click();
     }
 
-    public void selectAllEnableCheckboxes() {
-        visibilityOfCheckboxes();
+    public void selectWindWaterSelenYellow() {
+        ensureVisibilityOfCheckboxesRadioColors();
         selectWaterCheckbox();
         selectWindCheckbox();
         selectSelenRadio();

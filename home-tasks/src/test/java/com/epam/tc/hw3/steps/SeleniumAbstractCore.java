@@ -1,6 +1,6 @@
 package com.epam.tc.hw3.steps;
 
-import com.epam.tc.hw03.composite.property.PropertiesData;
+import com.epam.tc.hw03.composite.support.PropertiesProvider;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public abstract class SeleniumAbstractCore {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected PropertiesData propertiesData;
+    protected PropertiesProvider properties;
 
     @BeforeSuite
     public void beforeSuite() {
@@ -28,8 +28,8 @@ public abstract class SeleniumAbstractCore {
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        propertiesData = new PropertiesData();
-        driver.get(propertiesData.getAddress());
+        properties = new PropertiesProvider();
+        driver.get(properties.getProperty("address"));
     }
 
     @AfterClass

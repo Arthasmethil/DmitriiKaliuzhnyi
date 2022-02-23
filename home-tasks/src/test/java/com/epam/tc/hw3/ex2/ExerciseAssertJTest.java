@@ -1,8 +1,9 @@
 package com.epam.tc.hw3.ex2;
 
+import static com.epam.tc.hw03.composite.component.common.HeaderMenu.HEAD_SERVICE;
+import static com.epam.tc.hw03.composite.component.ex2.ServiceDropdownMenu.HEAD_DIFFERENT_ELEMENTS;
 import static com.epam.tc.hw3.constants.ExpectedValuesConstants.EXPECTED_TEXT_LOG_WITHOUT_TIME;
 import static com.epam.tc.hw3.constants.ExpectedValuesConstants.EXPECTED_TITLE;
-import static com.epam.tc.hw3.constants.ExpectedValuesConstants.HEADER_DROPDOWN_SERVICE;
 
 import com.epam.tc.hw03.composite.pages.DifferentElementsPage;
 import com.epam.tc.hw03.composite.pages.IndexPageForExTwo;
@@ -20,23 +21,22 @@ public class ExerciseAssertJTest extends SeleniumAbstractCore {
         // 2. Assert Browser title
         Assertions.assertThat(driver.getTitle()).isEqualTo(EXPECTED_TITLE);
         // 3. User is logged
-        indexPageForExTwo.login().signIn(propertiesData.getName(), propertiesData.getPassword());
+        indexPageForExTwo.login().signIn(properties.getProperty("name"), properties.getProperty("password"));
         // 4. Name is displayed and equals to expected result
         Assertions.assertThat(indexPageForExTwo.login().getSignedUserName())
                   .matches(WebElement::isDisplayed)
                   .extracting(WebElement::getText)
-                  .isEqualTo(propertiesData.getExpectedDisplayedName());
+                  .isEqualTo(properties.getProperty("displayed.name"));
         // 5. Open through the header menu Service -> Different Elements Page
         // 5.1 Dropdown caret is opened
-        indexPageForExTwo.headMenu().clickOnItem(HEADER_DROPDOWN_SERVICE);
+        indexPageForExTwo.headMenu().clickOnItem(HEAD_SERVICE);
         // 5.2 Different elements is selected
-        indexPageForExTwo.dropdownServiceMenu().navigateToDifferentElementsPage();
+        indexPageForExTwo.dropdownServiceMenu().clickOnItem(HEAD_DIFFERENT_ELEMENTS);
         // 6. Select checkboxes, 7. Select radio, 8. Select color
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
-        differentElementsPage.checkboxes().selectAllEnableCheckboxes();
+        differentElementsPage.checkboxes().selectWindWaterSelenYellow();
         // 9. Assert that for each checkbox there is an individual log row and value
-        differentElementsPage.logger().visibilityOfLogSection();
-        Assertions.assertThat(differentElementsPage.logger().getListOfLogs())
+        Assertions.assertThat(differentElementsPage.readLogSection().getListOfLogs())
               .hasSize(EXPECTED_TEXT_LOG_WITHOUT_TIME.size())
               .containsExactlyElementsOf(EXPECTED_TEXT_LOG_WITHOUT_TIME);
         // 10. Browser is closed by tearDown method, which is located into utils.SeleniumCoreTest

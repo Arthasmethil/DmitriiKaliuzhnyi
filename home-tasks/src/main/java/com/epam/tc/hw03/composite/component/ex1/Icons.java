@@ -2,10 +2,12 @@ package com.epam.tc.hw03.composite.component.ex1;
 
 import com.epam.tc.hw03.composite.component.AbstractBaseComponent;
 import java.util.List;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class Icons extends AbstractBaseComponent {
     @FindBy(css = ".benefit-icon")
     private List<WebElement> benefitIcons;
@@ -15,14 +17,6 @@ public class Icons extends AbstractBaseComponent {
 
     public Icons(WebDriver driver) {
         super(driver);
-    }
-
-    public List<WebElement> getBenefitForIcons() {
-        return benefitText;
-    }
-
-    public List<WebElement> getIcons() {
-        return benefitIcons;
     }
 
 }

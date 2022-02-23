@@ -1,6 +1,7 @@
 package com.epam.tc.hw03.composite.component.common;
 
 import com.epam.tc.hw03.composite.component.AbstractBaseComponent;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class Login extends AbstractBaseComponent {
     private WebElement logInButton;
 
     @FindBy(id = "user-name")
+    @Getter
     private WebElement signedUserName;
 
     public Login(WebDriver driver) {
@@ -34,7 +36,7 @@ public class Login extends AbstractBaseComponent {
         dropdownLoginCaret.click();
     }
 
-    public void visibilityOfLoginDropdownMenu() {
+    public void ensureVisibilityOfLoginDropdownMenu() {
         wait.until(ExpectedConditions.visibilityOf(dropdownLoginWindow));
     }
 
@@ -52,13 +54,10 @@ public class Login extends AbstractBaseComponent {
 
     public void signIn(final String name, final String password) {
         clickToDropdownLoginWindow();
-        visibilityOfLoginDropdownMenu();
+        ensureVisibilityOfLoginDropdownMenu();
         sendLoginName(name);
         sendLoginPassword(password);
         clickToSignIn();
     }
 
-    public WebElement getSignedUserName() {
-        return signedUserName;
-    }
 }

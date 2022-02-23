@@ -3,7 +3,6 @@ package com.epam.tc.hw3.constants;
 import java.util.List;
 
 public class ExpectedValuesConstants {
-    public static final String HEADER_DROPDOWN_SERVICE = "SERVICE";
 
     // Expectations for point 2 GENERAL
     public static final String EXPECTED_TITLE = "Home Page";
