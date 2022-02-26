@@ -23,6 +23,7 @@ public abstract class AbstractBaseComponent {
         for (WebElement item : list) {
             if (item.getText().equals(itemText)) {
                 item.click();
+                break;
             }
         }
     }

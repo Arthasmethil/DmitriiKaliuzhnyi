@@ -21,7 +21,7 @@ public class HeaderMenu extends AbstractBaseComponent {
 
     @Step("Click on header menu '{itemText}'")
     public void clickOnItem(final String itemText) {
-        super.clickOnItem(getMenuItems(), itemText);
+        clickOnItem(menuItems, itemText);
     }
 
 }

@@ -19,7 +19,7 @@ public class LeftMenu extends AbstractBaseComponent {
 
     @Step("Click on header menu '{itemText}'")
     public void clickOnItem(final String itemText) {
-        super.clickOnItem(getLeftMenu(), itemText);
+        clickOnItem(leftMenu, itemText);
     }
 
 }

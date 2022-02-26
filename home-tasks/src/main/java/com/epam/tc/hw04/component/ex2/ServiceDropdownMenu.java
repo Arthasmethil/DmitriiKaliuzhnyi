@@ -3,7 +3,6 @@ package com.epam.tc.hw04.component.ex2;
 import com.epam.tc.hw04.component.AbstractBaseComponent;
 import java.util.List;
 import lombok.Getter;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,11 +20,7 @@ public class ServiceDropdownMenu extends AbstractBaseComponent {
     }
 
     public void clickOnItem(String itemText) {
-        try {
-            super.clickOnItem(getDropdownServiceMenu(), itemText);
-        } catch (StaleElementReferenceException e) {
-            super.clickOnItem(getDropdownServiceMenu(), itemText);
-        }
+        clickOnItem(dropdownServiceMenu, itemText);
     }
 
 }
