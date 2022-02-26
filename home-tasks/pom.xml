@@ -24,6 +24,7 @@
         <webdrivermanager.version>5.0.3</webdrivermanager.version>
         <testng.simpleSuite.config.path>${project.build.testOutputDirectory}</testng.simpleSuite.config.path>
 
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,12 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -138,6 +145,12 @@
             <id>hw2</id>
             <properties>
                 <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw2/homeworkTwo.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw3/homeworkThree.xml</testng.priority.simpleOperations.file>
             </properties>
         </profile>
     </profiles>
