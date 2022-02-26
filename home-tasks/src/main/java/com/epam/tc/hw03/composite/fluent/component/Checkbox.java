@@ -28,9 +28,9 @@ public class Checkbox extends AbstractBaseComponent {
         super(driver);
     }
 
-    public DifferentElementsPageFluent visibilityOfCheckboxes() {
+    public Checkbox visibilityOfCheckboxes() {
         wait.until(ExpectedConditions.visibilityOf(containerOfCheckboxes));
-        return new DifferentElementsPageFluent(driver);
+        return this;
     }
 
     public Checkbox selectWaterCheckbox() {

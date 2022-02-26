@@ -32,6 +32,7 @@ public class ExerciseAssertJTestFluent extends SeleniumAbstractCore {
             .clickOnItem(HEAD_SERVICE)// 5.1 Dropdown caret is opened
             .navigateToDifferentElementsPage() // Open Different Elements Page
             .checkboxes()
+            .visibilityOfCheckboxes()
             .selectWaterCheckbox()
             .selectWindCheckbox()
             .selectSelenRadio()

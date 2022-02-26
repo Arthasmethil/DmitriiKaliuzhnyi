@@ -19,7 +19,7 @@ public class HeaderMenu extends AbstractBaseComponent {
     }
 
     public void clickOnItem(final String itemText) {
-        super.clickOnItem(getMenuItems(), itemText);
+        clickOnItem(menuItems, itemText);
     }
 
 }

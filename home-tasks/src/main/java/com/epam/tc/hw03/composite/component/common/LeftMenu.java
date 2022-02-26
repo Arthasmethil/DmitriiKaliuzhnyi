@@ -17,7 +17,7 @@ public class LeftMenu extends AbstractBaseComponent {
     }
 
     public void clickOnItem(final String itemText) {
-        super.clickOnItem(getLeftMenu(), itemText);
+        super.clickOnItem(leftMenu, itemText);
     }
 
 }
