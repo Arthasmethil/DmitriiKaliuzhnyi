@@ -33,6 +33,9 @@ public class JenkinsExerciseAssertJTest extends SeleniumAbstractCore {
         IndexPageForExTwo indexPageForExTwo = new IndexPageForExTwo(driver);
         indexPageForExTwo.login().signIn(properties.getProperty("name"), properties.getProperty("password"));
 
+        step("This step is a failure");
+        Assertions.assertThat(true).isFalse();
+
         step("4. Name is displayed and equals to expected result");
         Assertions.assertThat(indexPageForExTwo.login().getSignedUserName())
                   .matches(WebElement::isDisplayed)
