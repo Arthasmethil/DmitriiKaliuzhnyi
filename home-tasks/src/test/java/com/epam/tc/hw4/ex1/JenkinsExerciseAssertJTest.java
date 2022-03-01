@@ -6,8 +6,8 @@ import static io.qameta.allure.Allure.step;
 
 import com.epam.tc.hw04.pages.DifferentElementsPage;
 import com.epam.tc.hw04.pages.IndexPageForExTwo;
-import com.epam.tc.hw4.constants.Data;
-import com.epam.tc.hw4.constants.DataProviderTest;
+import com.epam.tc.hw04.support.Data;
+import com.epam.tc.hw4.data.provider.DataProviderTest;
 import com.epam.tc.hw4.steps.SeleniumAbstractCore;
 import com.epam.tc.hw4.storynames.Tags;
 import io.qameta.allure.Description;

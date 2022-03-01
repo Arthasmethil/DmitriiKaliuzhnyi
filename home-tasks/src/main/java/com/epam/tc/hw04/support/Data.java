@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.constants;
+package com.epam.tc.hw04.support;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

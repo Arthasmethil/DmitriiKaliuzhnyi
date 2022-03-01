@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.constants;
+package com.epam.tc.hw4.data.provider;
 
 import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_ICON_TEXTS;
 import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TEXT_HEADER_MENU;
@@ -7,6 +7,7 @@ import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TEXT_LO
 import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TITLE;
 
 import com.epam.tc.hw04.support.PropertiesProvider;
+import com.epam.tc.hw04.support.Data;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderTest {
