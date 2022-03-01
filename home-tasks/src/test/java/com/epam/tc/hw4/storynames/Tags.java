@@ -7,5 +7,7 @@ public class Tags {
     public static final String SOFT_ASSERT_TEST_FEATURE = "Soft assertion test";
     public static final String ASSERTJ_TEST_FEATURE = "AssertJ test";
     public static final String INTEGRATION_SOFT_STORY = "Soft asserts exercise 1";
-    public static final String INTEGRATION_HARD_STORY = "Hard asserts exercise 2";
+    public static final String INTEGRATION_HARD_STORY = "Hard asserts exercise 1";
+    public static final String FAILED_TESTS = "Failed tests";
+    public static final String SUCCESS_TESTS = "Successes tests";
 }

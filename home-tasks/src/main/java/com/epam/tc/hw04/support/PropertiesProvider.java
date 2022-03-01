@@ -6,7 +6,7 @@ import java.util.Properties;
 import lombok.SneakyThrows;
 
 public class PropertiesProvider {
-    private static final String PATH_TO_PROPERTIES = "src/test/resources/hw3/hw3.properties";
+    private static final String PATH_TO_PROPERTIES = "src/test/resources/hw4/hw4.properties";
     private static Properties properties;
 
     @SneakyThrows
