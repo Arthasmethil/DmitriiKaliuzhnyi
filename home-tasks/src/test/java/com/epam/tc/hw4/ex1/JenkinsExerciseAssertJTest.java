@@ -2,7 +2,6 @@ package com.epam.tc.hw4.ex1;
 
 import static com.epam.tc.hw04.component.common.HeaderMenu.HEAD_SERVICE;
 import static com.epam.tc.hw04.component.ex2.ServiceDropdownMenu.HEAD_DIFFERENT_ELEMENTS;
-import static io.qameta.allure.Allure.step;
 
 import com.epam.tc.hw04.pages.DifferentElementsPage;
 import com.epam.tc.hw04.pages.IndexPageForExTwo;
@@ -30,31 +29,31 @@ public class JenkinsExerciseAssertJTest extends SeleniumAbstractCore {
     @Story(Tags.INTEGRATION_HARD_STORY)
     public void checkAndSearchElementsOnDifferentElementsPage(Data data) {
 
-        step("1. Open test site by URL in setUp method");
-        step("2. Assert Browser title");
+        // "1. Open test site by URL in setUp method"
+        // "2. Assert Browser title"
         Assertions.assertThat(driver.getTitle()).isEqualTo(data.getTitle());
 
-        step("3. User is logged");
+        // "3. User is logged"
         IndexPageForExTwo indexPageForExTwo = new IndexPageForExTwo(driver);
         indexPageForExTwo.login().signIn(data.getLogin(), data.getPassword());
 
-        step("4. Name is displayed and equals to expected result");
+        // "4. Name is displayed and equals to expected result"
         Assertions.assertThat(indexPageForExTwo.login().getSignedUserName())
                   .matches(WebElement::isDisplayed)
                   .extracting(WebElement::getText)
                   .isEqualTo(data.getDisplayedName());
 
-        step("5. Open through the header menu Service -> Different Elements Page");
+        // "5. Open through the header menu Service -> Different Elements Page"
         indexPageForExTwo.headMenu().clickOnItem(HEAD_SERVICE);
 
-        step("5.1 Different elements is selected");
+        // "5.1 Different elements is selected"
         indexPageForExTwo.dropdownServiceMenu().clickOnItem(HEAD_DIFFERENT_ELEMENTS);
 
-        step("6. Select checkboxes, 7. Select radio, 8. Select color");
+        // "6. Select checkboxes, 7. Select radio, 8. Select color"
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
         differentElementsPage.checkboxes().selectWindWaterSelenYellow();
 
-        step("9. Assert that for each checkbox there is an individual log row and value");
+        // "9. Assert that for each checkbox there is an individual log row and value"
         Assertions.assertThat(differentElementsPage.readLogSection().getListOfLogs())
               .hasSize(data.getExpectedTextLogs().size())
               .containsExactlyElementsOf(data.getExpectedTextLogs());

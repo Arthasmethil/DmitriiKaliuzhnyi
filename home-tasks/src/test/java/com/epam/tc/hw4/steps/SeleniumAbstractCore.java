@@ -32,9 +32,9 @@ public abstract class SeleniumAbstractCore {
     @Step("initialization and config WebDriver with properties")
     public void setUp(ITestContext context) {
         step("Setup Chrome options");
-        options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.setHeadless(true);
+        options = new ChromeOptions()
+            .addArguments("start-maximized")
+            .setHeadless(true);
         step("Initializing driver and waits");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

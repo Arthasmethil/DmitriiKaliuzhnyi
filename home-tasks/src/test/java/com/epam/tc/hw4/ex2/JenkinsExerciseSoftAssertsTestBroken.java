@@ -1,7 +1,5 @@
 package com.epam.tc.hw4.ex2;
 
-import static io.qameta.allure.Allure.step;
-
 import com.epam.tc.hw04.pages.IndexPageForExOne;
 import com.epam.tc.hw04.support.Data;
 import com.epam.tc.hw4.data.provider.DataProviderTest;
@@ -26,16 +24,16 @@ public class JenkinsExerciseSoftAssertsTestBroken extends SeleniumAbstractCore {
     @Description("Soft asserts with steps annotations, one of the way to test step by step")
     public void checkAndSearchElementsOnPageWithSoftAsserts(Data data) {
         SoftAssertions softly = new SoftAssertions();
-        step("1. Open test site by URL in setUp method");
+        // "1. Open test site by URL in setUp method"
 
-        step("2. Assert Browser title");
+        // "2. Assert Browser title"
         softly.assertThat(driver.getTitle()).isEqualTo(data.getTitle());
 
-        step("3. User is logged");
+        // "3. User is logged"
         IndexPageForExOne indexPageForExOne = new IndexPageForExOne(driver);
         indexPageForExOne.login().signIn(data.getLogin(), data.getPassword());
 
-        step("4. Name is displayed and equals to expected result");
+        // "4. Name is displayed and equals to expected result"
         softly.assertThat(indexPageForExOne.login().getSignedUserName())
               .matches(WebElement::isDisplayed)
               .extracting(WebElement::getText)
