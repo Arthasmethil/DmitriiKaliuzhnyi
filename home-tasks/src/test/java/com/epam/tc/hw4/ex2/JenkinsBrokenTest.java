@@ -1,6 +1,6 @@
 package com.epam.tc.hw4.ex2;
 
-import com.epam.tc.hw04.support.Data;
+import com.epam.tc.hw04.support.DataForTests;
 import com.epam.tc.hw4.data.provider.DataProviderTest;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -19,7 +19,7 @@ public class JenkinsBrokenTest extends SeleniumAbstractCore {
           dataProvider = "testDataForJenkins",
           dataProviderClass = DataProviderTest.class)
     @Description("This test is a failure")
-    public void checkAndSearchElementsOnPageWithSoftAsserts(Data data) {
+    public void checkAndSearchElementsOnPageWithSoftAsserts(DataForTests data) {
         AssertionStep assertionStep = new AssertionStep(driver, wait);
         ActionStep actionStep = new ActionStep(driver, wait);
 

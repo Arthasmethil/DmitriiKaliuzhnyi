@@ -1,6 +1,6 @@
 package com.epam.tc.hw4.ex1;
 
-import com.epam.tc.hw04.support.Data;
+import com.epam.tc.hw04.support.DataForTests;
 import com.epam.tc.hw4.data.provider.DataProviderTest;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -18,7 +18,7 @@ public class JenkinsIndexPageTest extends SeleniumAbstractCore {
     @Test(dataProvider = "testDataForJenkins",
           dataProviderClass = DataProviderTest.class)
     @Description("Asserts with steps annotations, one of the way to test step by step")
-    public void checkAndSearchElementsOnPageWithSoftAsserts(Data data) {
+    public void checkAndSearchElementsOnPageWithSoftAsserts(DataForTests data) {
         AssertionStep assertionStep = new AssertionStep(driver, wait);
         ActionStep actionStep = new ActionStep(driver, wait);
 

@@ -1,6 +1,6 @@
 package com.epam.tc.hw4.ex1;
 
-import com.epam.tc.hw04.support.Data;
+import com.epam.tc.hw04.support.DataForTests;
 import com.epam.tc.hw4.data.provider.DataProviderTest;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
@@ -18,7 +18,7 @@ public class JenkinsDifferentElementsTest extends SeleniumAbstractCore {
           dataProviderClass = DataProviderTest.class)
     @Description("Another path to test")
     @Story(Tags.SUCCESS_STORY)
-    public void checkAndSearchElementsOnDifferentElementsPage(Data data) {
+    public void checkAndSearchElementsOnDifferentElementsPage(DataForTests data) {
         AssertionStep assertionStep = new AssertionStep(driver, wait);
         ActionStep actionStep = new ActionStep(driver, wait);
 

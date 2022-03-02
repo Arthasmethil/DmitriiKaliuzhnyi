@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 
 @lombok.Data
 @AllArgsConstructor
-public class Data {
+public class DataForTests {
 
     private String title;
     private String login;
