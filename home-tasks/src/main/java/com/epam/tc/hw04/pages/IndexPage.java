@@ -2,24 +2,27 @@ package com.epam.tc.hw04.pages;
 
 import com.epam.tc.hw04.component.ex1.Icons;
 import com.epam.tc.hw04.component.ex1.IframeWindowComponent;
+import com.epam.tc.hw04.component.ex2.ServiceDropdownMenu;
 import java.util.List;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class IndexPageForExOne extends AbstractIndexPage {
+public class IndexPage extends AbstractIndexPage {
     protected Icons icons;
     protected IframeWindowComponent iframeWindowComponent;
+    protected ServiceDropdownMenu dropdownHeaderMenu;
 
     @FindBy(id = "frame")
     @Getter
     private List<WebElement> iframe;
 
-    public IndexPageForExOne(WebDriver driver) {
+    public IndexPage(WebDriver driver) {
         super(driver);
         icons = new Icons(driver);
         iframeWindowComponent = new IframeWindowComponent(driver);
+        dropdownHeaderMenu = new ServiceDropdownMenu(driver);
     }
 
     public IframeWindowComponent iframeWindow() {
@@ -36,5 +39,9 @@ public class IndexPageForExOne extends AbstractIndexPage {
 
     public void switchToDefaultContent() {
         driver.switchTo().defaultContent();
+    }
+
+    public ServiceDropdownMenu dropdownServiceMenu() {
+        return this.dropdownHeaderMenu;
     }
 }

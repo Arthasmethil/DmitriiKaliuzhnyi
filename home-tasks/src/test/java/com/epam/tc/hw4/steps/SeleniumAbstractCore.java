@@ -1,7 +1,5 @@
 package com.epam.tc.hw4.steps;
 
-import static io.qameta.allure.Allure.step;
-
 import com.epam.tc.hw04.support.PropertiesProvider;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
@@ -29,16 +27,13 @@ public abstract class SeleniumAbstractCore {
     }
 
     @BeforeClass
-    @Step("initialization and config WebDriver with properties")
+    @Step("initialization and config WebDriver")
     public void setUp(ITestContext context) {
-        step("Setup Chrome options");
         options = new ChromeOptions()
             .addArguments("start-maximized")
             .setHeadless(true);
-        step("Initializing driver and waits");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        step("Go to site address");
         properties = new PropertiesProvider();
         driver.get(properties.getProperty("address"));
         context.setAttribute("driver", driver);
