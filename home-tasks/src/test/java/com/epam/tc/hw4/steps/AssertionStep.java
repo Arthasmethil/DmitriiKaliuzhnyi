@@ -59,7 +59,7 @@ public class AssertionStep extends AbstractStep {
             .allMatch(WebElement::isDisplayed);
     }
 
-    @Step("Switch to the iframe and check that there is “Frame Button” in the iframe")
+    @Step("Check that there is “Frame Button” in the iframe")
     public void assertThatButtonInFrameExist() {
         assertThat(indexPage.iframeWindow().getIframeButton())
               .hasAtLeastOneElementOfType(WebElement.class)

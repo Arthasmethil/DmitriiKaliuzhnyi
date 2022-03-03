@@ -6,8 +6,8 @@ import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TEXT_LE
 import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TEXT_LOG_WITHOUT_TIME;
 import static com.epam.tc.hw4.constants.ExpectedValuesConstants.EXPECTED_TITLE;
 
-import com.epam.tc.hw04.support.DataForTests;
 import com.epam.tc.hw04.support.PropertiesProvider;
+import com.epam.tc.hw4.data.support.DataForTests;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderTest {

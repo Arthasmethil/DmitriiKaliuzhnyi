@@ -1,7 +1,7 @@
 package com.epam.tc.hw4.ex2;
 
-import com.epam.tc.hw04.support.DataForTests;
 import com.epam.tc.hw4.data.provider.DataProviderTest;
+import com.epam.tc.hw4.data.support.DataForTests;
 import com.epam.tc.hw4.steps.ActionStep;
 import com.epam.tc.hw4.steps.AssertionStep;
 import com.epam.tc.hw4.steps.SeleniumAbstractCore;

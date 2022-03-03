@@ -1,4 +1,4 @@
-package com.epam.tc.hw04.support;
+package com.epam.tc.hw4.data.support;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

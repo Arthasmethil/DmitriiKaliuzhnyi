@@ -1,7 +1,6 @@
 package com.epam.tc.hw04.component.common;
 
 import com.epam.tc.hw04.component.AbstractBaseComponent;
-import io.qameta.allure.Step;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,32 +32,26 @@ public class Login extends AbstractBaseComponent {
         super(driver);
     }
 
-    @Step("Opening dropdown caret in header login window")
     public void clickToDropdownLoginWindow() {
         dropdownLoginCaret.click();
     }
 
-    @Step("Ensuring that login window is visible")
     public void ensureVisibilityOfLoginDropdownMenu() {
         wait.until(ExpectedConditions.visibilityOf(dropdownLoginWindow));
     }
 
-    @Step("Sending name for login")
     public void sendLoginName(final String name) {
         loginName.sendKeys(name);
     }
 
-    @Step("Sending password for login")
     public void sendLoginPassword(final String password) {
         loginPassword.sendKeys(password);
     }
 
-    @Step("Submitting")
     public void clickToSignIn() {
         logInButton.click();
     }
 
-    @Step("Login step by step")
     public void signIn(final String name, final String password) {
         clickToDropdownLoginWindow();
         ensureVisibilityOfLoginDropdownMenu();
