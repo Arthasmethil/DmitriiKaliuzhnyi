@@ -1,7 +1,7 @@
 package com.epam.tc.hw05.pages;
 
-import com.epam.tc.hw05.component.ex2.Checkbox;
-import com.epam.tc.hw05.component.ex2.LogReader;
+import com.epam.tc.hw05.component.domain.Checkbox;
+import com.epam.tc.hw05.component.domain.LogReader;
 import org.openqa.selenium.WebDriver;
 
 public class DifferentElementsPage extends AbstractIndexPage {

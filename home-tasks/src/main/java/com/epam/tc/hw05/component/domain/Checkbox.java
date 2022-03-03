@@ -1,4 +1,4 @@
-package com.epam.tc.hw05.component.ex2;
+package com.epam.tc.hw05.component.domain;
 
 import com.epam.tc.hw05.component.AbstractBaseComponent;
 import org.openqa.selenium.WebDriver;

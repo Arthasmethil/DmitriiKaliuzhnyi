@@ -1,7 +1,7 @@
 package com.epam.tc.hw5.steps;
 
 import static com.epam.tc.hw05.component.common.HeaderMenu.HEAD_SERVICE;
-import static com.epam.tc.hw05.component.ex2.ServiceDropdownMenu.HEAD_DIFFERENT_ELEMENTS;
+import static com.epam.tc.hw05.component.domain.ServiceDropdownMenu.HEAD_DIFFERENT_ELEMENTS;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -40,14 +40,5 @@ public class ActionStep extends AbstractStep {
         indexPage.login().signIn(name, password);
     }
 
-    @Step("Switch to the iframe")
-    public void switchToFrame() {
-        indexPage.switchToIframe();
-    }
-
-    @Step("Switch to original window back")
-    public void switchToDefaultPage() {
-        indexPage.switchToDefaultContent();
-    }
 
 }
