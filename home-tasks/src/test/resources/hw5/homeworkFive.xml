@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="HomeworkFive" verbose="1" >
+  <listeners>
+    <listener class-name="com.epam.tc.hw5.listeners.ScreenshotListener"/>
+  </listeners>
+  <test name="CucumberHomeworkFive">
+    <packages>
+      <package name = "com.epam.tc.hw5.ex1.*"/>
+      <package name = "com.epam.tc.hw5.ex2.*"/>
+    </packages>
+  </test>
+</suite>
