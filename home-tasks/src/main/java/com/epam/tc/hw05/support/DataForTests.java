@@ -16,4 +16,5 @@ public class DataForTests {
     private List<String> expectedTextLeftMenu;
     private List<String> expectedTextIcons;
     private List<String> expectedTextLogs;
+    private List<String> expectedUserLogSection;
 }

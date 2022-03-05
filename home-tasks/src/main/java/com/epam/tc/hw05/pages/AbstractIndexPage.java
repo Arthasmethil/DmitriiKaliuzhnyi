@@ -3,6 +3,7 @@ package com.epam.tc.hw05.pages;
 import com.epam.tc.hw05.component.common.HeaderMenu;
 import com.epam.tc.hw05.component.common.LeftMenu;
 import com.epam.tc.hw05.component.common.Login;
+import com.epam.tc.hw05.support.PropertiesProvider;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +16,7 @@ public abstract class AbstractIndexPage {
     protected Login login;
     protected HeaderMenu headerMenu;
     protected LeftMenu leftMenu;
+    protected PropertiesProvider properties;
 
     protected AbstractIndexPage(WebDriver driver) {
         this.driver = driver;
@@ -23,6 +25,7 @@ public abstract class AbstractIndexPage {
         login = new Login(driver);
         headerMenu = new HeaderMenu(driver);
         leftMenu = new LeftMenu(driver);
+        properties = new PropertiesProvider();
     }
 
     public Login login() {
@@ -36,4 +39,10 @@ public abstract class AbstractIndexPage {
     public LeftMenu leftMenu() {
         return this.leftMenu;
     }
+
+    protected void openIndexPage() {
+        driver.get(properties.getProperty("address"));
+    }
+
+
 }

@@ -24,4 +24,6 @@ public class ExpectedValuesConstants {
 
     public static final List<String> EXPECTED_TEXT_LEFT_MENU = List.of(
         "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
+
+    public static final List<String> EXPECTED_USER_LOG = List.of("Vip: condition changed to true");
 }

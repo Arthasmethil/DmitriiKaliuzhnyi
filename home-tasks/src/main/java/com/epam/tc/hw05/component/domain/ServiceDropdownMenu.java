@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 public class ServiceDropdownMenu extends AbstractBaseComponent {
 
     public static final String HEAD_DIFFERENT_ELEMENTS = "DIFFERENT ELEMENTS";
+    public static final String HEAD_USER_TABLE = "USER TABLE";
 
     @FindBy(css = ".dropdown-menu > li")
     private List<WebElement> dropdownServiceMenu;

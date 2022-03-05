@@ -49,9 +49,10 @@ public class ActionStep extends AbstractStep {
         indexPage.login().signIn(data.getLogin(), data.getPassword());
     }
 
-    //@When("I select 'vip' checkbox for 'Sergey Ivan'")
-    //public void selectIvanCheckbox() {
-    //userTablePage.userList().clickOnIvanCheckbox();
-    //}
+    @When("I select 'vip' checkbox for Sergey {string}")
+    public void selectIvanCheckbox(String username) {
+        userTablePage.userTable().clickOnCheckbox(username);
+    }
+
 
 }

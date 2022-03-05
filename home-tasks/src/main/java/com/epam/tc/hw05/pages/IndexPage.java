@@ -14,4 +14,8 @@ public class IndexPage extends AbstractIndexPage {
     public ServiceDropdownMenu dropdownServiceMenu() {
         return this.dropdownHeaderMenu;
     }
+
+    public void open() {
+        openIndexPage();
+    }
 }

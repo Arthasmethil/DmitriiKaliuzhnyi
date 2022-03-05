@@ -2,10 +2,14 @@ package com.epam.tc.hw05.component.domain;
 
 import com.epam.tc.hw05.component.AbstractBaseComponent;
 import com.epam.tc.hw05.utils.StringEditorForLogs;
-import io.qameta.allure.Step;
+import io.cucumber.datatable.DataTable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,14 +18,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 @Getter
 public class UserTable extends AbstractBaseComponent {
 
+    @FindBy(className = "main-content-hg")
+    private WebElement mainContent;
+
     @FindBy(css = ".logs > li")
     private List<WebElement> userLogs;
 
     @FindBy(className = "info-panel-section")
     private WebElement logSection;
-
-    @FindBy(css = "input[id=ivan]")
-    private WebElement ivanCheckbox;
 
     @FindBy(css = "input[type='checkbox']")
     private List<WebElement> checkboxes;
@@ -35,10 +39,8 @@ public class UserTable extends AbstractBaseComponent {
     @FindBy(css = "tr a")
     private List<WebElement> usernames;
 
-    @FindBy(css = "tr td")
+    @FindBy(xpath = "//tr/td[1][contains(text(),'')]")
     private List<WebElement> userNumbers;
-
-
 
     public UserTable(WebDriver driver) {
         super(driver);
@@ -52,12 +54,40 @@ public class UserTable extends AbstractBaseComponent {
                        .collect(Collectors.toList());
     }
 
-    @Step("Click on {username} checkbox")
     public void clickOnCheckbox(String username) {
-        for (WebElement userCheckbox : checkboxes) {
-            //if (userCheckbox.findElement(By.id("'" + username + "'")))
-        }
-        //input[type='checkbox']
+        mainContent.findElements(By.id(username.toLowerCase(Locale.ROOT))).get(0).click();
     }
 
+    public List<User> getUserList() {
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < usernames.size(); i++) {
+            users.add(new User(
+                userNumbers.get(i).getText(),
+                usernames.get(i).getText(),
+                userDescription.get(i).getText().replace("\n", " ")
+            ));
+        }
+        return users;
+    }
+
+    public List<User> transformDataTableUsersToUserList(DataTable table) {
+        List<User> expectedUserList = new ArrayList<>();
+        List<Map<String, String>> rows = table.asMaps();
+        for (Map<String, String> column : rows) {
+            expectedUserList.add(new User(
+                column.get("Number"),
+                column.get("User"),
+                column.get("Description")
+            ));
+        }
+        return expectedUserList;
+    }
+
+    public List<String> getUserDropdownValues(String username) {
+        return mainContent
+            .findElements((By.xpath("//tr[contains(.,'" + username + "')]/td/select/*")))
+            .stream()
+            .map(WebElement::getText)
+            .collect(Collectors.toList());
+    }
 }
