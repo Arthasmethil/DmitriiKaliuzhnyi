@@ -36,10 +36,6 @@ public abstract class AbstractIndexPage {
         return this.headerMenu;
     }
 
-    public LeftMenu leftMenu() {
-        return this.leftMenu;
-    }
-
     protected void openIndexPage() {
         driver.get(properties.getProperty("address"));
     }
