@@ -1,4 +1,4 @@
-package com.epam.tc.hw05.support;
+package com.epam.tc.hw5.support;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,6 @@ public class DataForTests {
     private String password;
     private String displayedName;
 
-    private List<String> expectedTextHeadMenu;
-    private List<String> expectedTextLeftMenu;
-    private List<String> expectedTextIcons;
     private List<String> expectedTextLogs;
     private List<String> expectedUserLogSection;
 }
