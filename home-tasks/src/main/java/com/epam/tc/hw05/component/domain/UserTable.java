@@ -2,11 +2,9 @@ package com.epam.tc.hw05.component.domain;
 
 import com.epam.tc.hw05.component.AbstractBaseComponent;
 import com.epam.tc.hw05.utils.StringEditorForLogs;
-import io.cucumber.datatable.DataTable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import org.openqa.selenium.By;
@@ -68,19 +66,6 @@ public class UserTable extends AbstractBaseComponent {
             ));
         }
         return users;
-    }
-
-    public List<User> transformDataTableUsersToUserList(DataTable table) {
-        List<User> expectedUserList = new ArrayList<>();
-        List<Map<String, String>> rows = table.asMaps();
-        for (Map<String, String> column : rows) {
-            expectedUserList.add(new User(
-                column.get("Number"),
-                column.get("User"),
-                column.get("Description")
-            ));
-        }
-        return expectedUserList;
     }
 
     public List<String> getUserDropdownValues(String username) {

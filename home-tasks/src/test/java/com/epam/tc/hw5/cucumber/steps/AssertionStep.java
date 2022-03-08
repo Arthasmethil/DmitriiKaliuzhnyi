@@ -6,7 +6,9 @@ import com.epam.tc.hw05.component.domain.User;
 import com.epam.tc.hw5.cucumber.context.TestContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -66,7 +68,15 @@ public class AssertionStep extends AbstractStep {
 
     @Then("User table should contain following values:")
     public void assertActualUserListWithExpected(DataTable table) {
-        List<User> expectedUserList = userTablePage.userTable().transformDataTableUsersToUserList(table);
+        List<User> expectedUserList = new ArrayList<>();
+        List<Map<String, String>> rows = table.asMaps();
+        for (Map<String, String> column : rows) {
+            expectedUserList.add(new User(
+                column.get("Number"),
+                column.get("User"),
+                column.get("Description")
+            ));
+        }
         assertThat(userTablePage.userTable().getUserList())
             .hasSize(expectedUserList.size())
             .containsExactlyElementsOf(expectedUserList);
@@ -81,7 +91,8 @@ public class AssertionStep extends AbstractStep {
 
     @Then("droplist should contain values in column Type for user {string}")
     public void assertDropdownForUser(String username, DataTable table) {
-        List<String> expectedValues = table.asList().subList(1, table.asList().size());
+        List<String> datatableList = table.asList();
+        List<String> expectedValues = datatableList.subList(1, datatableList.size());
         List<String> actualValues = userTablePage.userTable().getUserDropdownValues(username);
         assertThat(actualValues)
             .hasSize(expectedValues.size())
