@@ -206,6 +206,12 @@
                 <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw5/homeworkFive.xml</testng.priority.simpleOperations.file>
             </properties>
         </profile>
+        <profile>
+            <id>hw6</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw6/homeworkSix.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
     </profiles>
 
     <reporting>
