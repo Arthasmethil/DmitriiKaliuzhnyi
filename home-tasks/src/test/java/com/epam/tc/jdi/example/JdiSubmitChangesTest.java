@@ -12,17 +12,6 @@ import org.testng.annotations.Test;
 public class JdiSubmitChangesTest implements JdiTestInit {
     PropertiesProvider propertiesProvider = new PropertiesProvider();
 
-
-    //@Test
-    //public void nonPageObjectTest() {
-    //    WebPage.openUrl("https://jdi-testing.github.io/jdi-light/index.html");
-    //    $("img#user-icon").click();
-    //    $("form #name").input("Roman");
-    //    $("form #password").input("Jdi1234");
-    //    $("form [type=submit]").click();
-    //    Assert.assertEquals(WebPage.getUrl(), "https://jdi-testing.github.io/jdi-light/index.html");
-    //}
-
     @Test
     public void loginTest() {
         homePage.open();
