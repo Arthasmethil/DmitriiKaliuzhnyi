@@ -32,6 +32,7 @@
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <cucumber.version>7.2.3</cucumber.version>
+        <jdi-light-html.version>1.4.4</jdi-light-html.version>
     </properties>
 
     <dependencies>
@@ -96,6 +97,12 @@
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
         </dependency>
 
     </dependencies>
