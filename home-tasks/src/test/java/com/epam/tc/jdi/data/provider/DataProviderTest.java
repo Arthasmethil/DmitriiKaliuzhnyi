@@ -12,12 +12,13 @@ public class DataProviderTest {
     public static Object[][] testDataForJdi() {
 
         List<MetalColorsData> metalColorsData = new ArrayList<>(JsonMapper.parseJson().values());
-        return new Object[][] {
-            { metalColorsData.get(0) },
-            { metalColorsData.get(1), },
-            { metalColorsData.get(2), },
-            { metalColorsData.get(3), },
-            { metalColorsData.get(4), }
-        };
+
+        Object[][] objects = new Object[metalColorsData.size()][];
+
+        for (int i = 0; i < metalColorsData.size(); i++) {
+            objects[i] = new Object[1];
+            objects[i][0] = metalColorsData.get(i);
+        }
+        return objects;
     }
 }
