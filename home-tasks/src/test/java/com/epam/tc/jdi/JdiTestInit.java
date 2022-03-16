@@ -39,6 +39,5 @@ public interface JdiTestInit {
     static  void logout() {
         HomePage.logout();
     }
-
 }
 

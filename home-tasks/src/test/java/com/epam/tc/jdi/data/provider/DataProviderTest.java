@@ -10,6 +10,7 @@ public class DataProviderTest {
 
     @DataProvider(name = "testDataForJdi")
     public static Object[][] testDataForJdi() {
+
         List<MetalColorsData> metalColorsData = new ArrayList<>(JsonMapper.parseJson().values());
         return new Object[][] {
             { metalColorsData.get(0) },

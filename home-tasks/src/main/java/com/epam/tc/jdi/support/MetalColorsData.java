@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @lombok.Data
 public class MetalColorsData extends DataClass<MetalColorsData> {
+
     private List<Integer> summary;
     private List<String> elements;
     private String color;

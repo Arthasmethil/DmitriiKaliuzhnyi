@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 public class JdiSubmitChangesTest implements JdiTestInit {
 
-
     @Test(dataProvider = "testDataForJdi",
           dataProviderClass = DataProviderTest.class)
     public void fillMetalColorsFormTest(MetalColorsData data) {

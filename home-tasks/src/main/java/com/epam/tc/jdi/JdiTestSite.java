@@ -8,7 +8,5 @@ import com.epam.tc.jdi.pages.MetalsAndColorsPage;
 public class JdiTestSite {
 
     public static HomePage homePage;
-
     public static MetalsAndColorsPage metalAndColorsPage;
-
 }

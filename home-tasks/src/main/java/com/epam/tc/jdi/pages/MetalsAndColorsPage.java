@@ -36,7 +36,6 @@ public class MetalsAndColorsPage extends WebPage {
                list = "li", expand = ".caret")
     public static Dropdown metals;
 
-
     @JDropdown(root = "#salad-dropdown", value = ".dropdown-menu",
                list = "li", expand = ".caret")
     public static Dropdown vegetables;
@@ -107,5 +106,4 @@ public class MetalsAndColorsPage extends WebPage {
         assertMetal(data.getMetals());
         assertVegetables(data.getVegetables());
     }
-
 }
