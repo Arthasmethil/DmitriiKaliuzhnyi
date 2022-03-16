@@ -25,6 +25,5 @@ public class JdiSubmitChangesTest implements JdiTestInit {
         metalAndColorsPage.fillMetalColorForm(data);
 
         metalAndColorsPage.assertFilledForm(data);
-
     }
 }

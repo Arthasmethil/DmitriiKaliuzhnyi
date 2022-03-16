@@ -40,4 +40,3 @@ public interface JdiTestInit {
         HomePage.logout();
     }
 }
-

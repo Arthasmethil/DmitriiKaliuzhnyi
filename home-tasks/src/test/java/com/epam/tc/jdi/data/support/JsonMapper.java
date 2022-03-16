@@ -23,4 +23,3 @@ public class JsonMapper {
         return dataFromJson;
     }
 }
-
