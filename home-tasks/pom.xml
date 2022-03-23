@@ -32,6 +32,8 @@
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <cucumber.version>7.2.3</cucumber.version>
+        <jdi-light-html.version>1.4.4</jdi-light-html.version>
+        <jackson-databind.version>2.13.0</jackson-databind.version>
     </properties>
 
     <dependencies>
@@ -98,6 +100,17 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -210,6 +223,12 @@
             <id>hw6</id>
             <properties>
                 <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/hw6/homeworkSix.xml</testng.priority.simpleOperations.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdiTest</id>
+            <properties>
+                <testng.priority.simpleOperations.file>${testng.simpleSuite.config.path}/jdi/jdiHomework.xml</testng.priority.simpleOperations.file>
             </properties>
         </profile>
     </profiles>
