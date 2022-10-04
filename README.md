@@ -1,2 +1,2 @@
 # DmitriiKaliuzhnyi
-Homework
+Pet project
